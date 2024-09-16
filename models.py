@@ -1,7 +1,7 @@
 # db models
-from sqlalchemy import Column, Integer, String, Float, create_engine
+from sqlalchemy import Column, Integer, String, Float
 from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy.orm import sessionmaker
+
 
 Base = declarative_base()
 
@@ -19,10 +19,4 @@ class Order(Base):
     quantity = Column(Integer, nullable=False)
     total_price = Column(Float)
 
-# Database connection
-DATABASE_URL = 'sqlite:///shop.db'
 
-def init_db():
-    engine = create_engine(DATABASE_URL)
-    Base.metadata.create_all(engine)
-    return sessionmaker(bind=engine)

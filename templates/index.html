@@ -9,8 +9,28 @@
     <h1>Available Items</h1>
     <ul>
         {% for item in items %}
-            <li>{{ item.name }} - ${{ item.price }} ({{ item.stock }} in stock)</li>
+            <li>
+                {{ item.name }} - ${{ item.price }} ({{ item.stock }} in stock)
+                <!-- Order form for each item -->
+                <form action="/order" method="POST">
+                    <input type="hidden" name="item_id" value="{{ item.id }}">
+                    <label for="quantity">Quantity:</label>
+                    <input type="number" name="quantity" min="1" max="{{ item.stock }}" required>
+                    <button type="submit">Order</button>
+                </form>
+            </li>
         {% endfor %}
+    </ul>
+
+    <h1>Orders</h1>
+    <ul>
+        {% if orders %}
+            {% for order in orders %}
+                <li>Item ID: {{ order.item_id }} - Quantity: {{ order.quantity }} - Total Price: ${{ order.total_price }}</li>
+            {% endfor %}
+        {% else %}
+            <li>No orders have been placed yet.</li>
+        {% endif %}
     </ul>
 </body>
 </html>

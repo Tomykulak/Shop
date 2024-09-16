@@ -1,3 +1,11 @@
 pip~=23.3
 setuptools~=65.5.1
 SQLAlchemy~=2.0.35
+zipp~=3.20.2
+MarkupSafe~=2.1.5
+werkzeug~=3.0.4
+click~=8.1.7
+jinja2~=3.1.4
+blinker~=1.8.2
+itsdangerous~=2.2.0
+flask~=3.0.3

@@ -1,4 +1,5 @@
-from models import Item
+from models import Item, Order
+
 
 def add_item(session, name, price, stock):
     item = Item(name=name, price=price, stock=stock)
@@ -16,3 +17,6 @@ def update_item_stock(session, item_id, quantity):
 
 def list_inventory(session):
     return session.query(Item).all()
+
+def list_orders(session):
+    return session.query(Order).all()
